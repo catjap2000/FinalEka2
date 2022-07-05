@@ -14,15 +14,15 @@ public class RegisterPg {
 
         MainGoToCreateAccPg = $(new ByText("Create an account")),
         AcceptCookies = $("#popin_tc_privacy_button"),
-        MainEmailInput = $(".pmd-input_field pmd-input_field--email"),
-        MainPasswordInput = $(new By.ByName("password")),
-        MainNewsletterCheckBox = $(byName("newsletter")),
-        MainCreateAccBtn = $("#pmd-button"),
+        MainEmailInput = $("#email"),
+        MainPasswordInput = $(byXpath("//*[@id=\"__layout\"]/div/main/div/section/div/div/form/div[2]/div[1]/div/input")),
+        MainNewsletterCheckBox = $(".pmd-checkbox_input"),
+        MainCreateAccBtn = $(byText("Create my account")),
         familyNameInput = $("#name"),
         firstNameInput = $("#firstname"),
-        MainDateOfBirthInput = $("#dateOfBirth"),
-        MainPhoneNumInput = $(new ByText("0606060606")),
-        MainContinueButton = $(".pmd-button pmd-form_button pmd-button_primary");
+        MainDateOfBirthInput = $(byName("Date of Birth")),
+        MainPhoneNumInput = $(byXpath("//*[@id=\"__layout\"]/div/main/div/div/div[2]/form/div[1]/div[4]/div/div[2]/div/input")),
+        MainContinueButton = $(byXpath("//*[@id=\"__layout\"]/div/main/div/div/div[2]/form/div[2]/button/span"));
 
 
 }

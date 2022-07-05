@@ -2,15 +2,16 @@ package PromodTest;
 
 import StepObject.RegisterPageSteps;
 import Utils.ChromeRunner;
+import com.codeborne.selenide.Condition;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static DataObject.RegisterPageData.MainLogInEmail;
+import static DataObject.RegisterPageData.*;
 
 public class RegisterTest extends ChromeRunner {
 
     @Test
-    public void RegPgProm() throws InterruptedException {
+    public void RegPgProm() {
         RegisterPageSteps Reg_Steps = new RegisterPageSteps();
 
         Reg_Steps
@@ -19,21 +20,24 @@ public class RegisterTest extends ChromeRunner {
         Reg_Steps
                 .Cookies()
                 .GoToAccountPage()
-                .mail()
-                .MainPassword()
-                .NewsletterCheckBox()
-                .Account_Button();
-
-        Assert.assertTrue(Reg_Steps.AcceptCookies.isSelected());
-        Assert.assertTrue(Reg_Steps.MainCreateAccBtn.isDisplayed());
-
+                .mail();
+        Assert.assertTrue(Reg_Steps.MainEmailInput.is(Condition.not(Condition.empty)));
 
         Reg_Steps
-                .MainFamilyName()
-                .MainFirstNm()
-                .DoB()
-                .MainPhoneNumber()
+                .MainPassword();
+        Assert.assertTrue(Reg_Steps.MainPasswordInput.is(Condition.not(Condition.empty)));
+
+        Reg_Steps
+                .NewsletterCheckBox()
+                .AccButton()
+                .MainCredentialsName()
+                .MainCredentialsFirstName()
+                .MainCredentialsDate()
+                .MainCredentialsPhone()
                 .ContinueBut();
+
+
+
 
 }
 

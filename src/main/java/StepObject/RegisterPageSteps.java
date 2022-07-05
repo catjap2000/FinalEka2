@@ -2,6 +2,7 @@ package StepObject;
 
 import PageObject.RegisterPg;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement.*;
 import io.qameta.allure.Step;
 
 import static DataObject.RegisterPageData.*;
@@ -15,7 +16,7 @@ public class RegisterPageSteps extends RegisterPg {
         }
 
         @Step ("Accept Cookies Button")
-        public RegisterPageSteps Cookies() throws InterruptedException {
+        public RegisterPageSteps Cookies(){
             AcceptCookies.click();
             sleep(1000);
             return this;
@@ -26,15 +27,14 @@ public class RegisterPageSteps extends RegisterPg {
             MainGoToCreateAccPg.click();
             return this;
         }
-        @Step("Fill email address, Value: {catjap2000@gmail.com}")
-        public RegisterPageSteps mail () throws InterruptedException {
-            MainEmailInput.setValue(MainLogInEmail);
-            MainEmailInput.shouldNotBe(Condition.empty).wait(1000);
+        @Step("Fill email address, Value: {Faker}")
+        public RegisterPageSteps mail () {
+            MainEmailInput.setValue(MainLogInEmail).shouldNotBe(Condition.empty);
             return this;
         }
-        @Step("Fill Password, Value: {caterina550}")
+        @Step("Fill Password, Value: {}")
         public RegisterPageSteps MainPassword (){
-            MainPasswordInput.setValue(MainPassword).shouldNotBe(Condition.empty).click();
+            MainPasswordInput.setValue(MainPasswordInp).click();
             return this;
         }
         @Step("Newsletter Checkbox")
@@ -43,34 +43,33 @@ public class RegisterPageSteps extends RegisterPg {
             return this;
         }
         @Step("Click Create My Account button")
-        public RegisterPageSteps Account_Button () throws InterruptedException {
-            MainCreateAccBtn.wait(1000);
+        public RegisterPageSteps AccButton () {
             MainCreateAccBtn.click();
             return this;
         }
-        @Step("Fill family name, Value: {Faker}")
-        public RegisterPageSteps MainFamilyName (){
-            familyNameInput.setValue(MainFamilyName).shouldNot(Condition.empty);
+        @Step("Fill family name")
+        public RegisterPageSteps MainCredentialsName() {
+            familyNameInput.setValue(MainFamilyNm);
             return this;
         }
-        @Step("fill First name, Value:{Caterina}")
-        public RegisterPageSteps MainFirstNm (){
-            firstNameInput.setValue(MainFirstNm).shouldNotBe(Condition.empty);
+        @Step("Fill first name")
+        public RegisterPageSteps MainCredentialsFirstName() {
+            firstNameInput.setValue(MainFirstNm);
             return this;
         }
-        @Step("Fill Date of Birth, Value: {02/01/75}")
-        public RegisterPageSteps DoB (){
-            MainDateOfBirthInput.setValue(MainDateOfBirth).shouldNotBe(Condition.empty);
+        @Step("Fill DoB")
+        public RegisterPageSteps MainCredentialsDate() {
+            MainDateOfBirthInput.setValue(MainDateOfBirth);
             return this;
         }
-        @Step("Fill phone number, Value: {Faker} ")
-        public RegisterPageSteps MainPhoneNumber (){
-            MainPhoneNumInput.setValue(MainPhoneNum).shouldNotBe(Condition.empty);
+        @Step("Fill Phone number")
+        public RegisterPageSteps MainCredentialsPhone() {
+            MainPhoneNumInput.setValue(MainPhoneNum);
             return this;
         }
         @Step("Click Continue button")
         public RegisterPageSteps ContinueBut (){
-            MainContinueButton.shouldBe(Condition.visible).click();
+            MainContinueButton.click();
             return this;
         }
     }
