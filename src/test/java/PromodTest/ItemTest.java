@@ -2,7 +2,7 @@ package PromodTest;
 
 import StepObject.ItemPageSteps;
 import Utils.ChromeRunner;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 public class ItemTest extends ChromeRunner {
     @Test

@@ -2,7 +2,7 @@ package StepObject;
 
 import PageObject.RegisterPg;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement.*;
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 
 import static DataObject.RegisterPageData.*;
@@ -10,64 +10,75 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class RegisterPageSteps extends RegisterPg {
-        @Step ("Open Account Page")
+        @Step
+        @Description("Open Account Page")
         public void openUrl(){
             open ("https://auth2.promod.com/en/?redirect_uri=www.promod.com%2Fen%2Fauth%2Fcallback%2F");
         }
-
-        @Step ("Accept Cookies Button")
+        @Step
+        @Description("Accept Cookies Button")
         public RegisterPageSteps Cookies(){
             AcceptCookies.click();
             sleep(1000);
             return this;
         }
 
-        @Step("Click Registration button")
+        @Step
+        @Description("Click Registration button")
         public RegisterPageSteps GoToAccountPage() {
             MainGoToCreateAccPg.click();
             return this;
         }
-        @Step("Fill email address, Value: {Faker}")
-        public RegisterPageSteps mail () {
+        @Step
+        @Description("Fill email address, Value: {Faker}")
+        public RegisterPageSteps mail (String mainLogInEmail) {
             MainEmailInput.setValue(MainLogInEmail).shouldNotBe(Condition.empty);
             return this;
         }
-        @Step("Fill Password, Value: {}")
-        public RegisterPageSteps MainPassword (){
+        @Step
+        @Description("Fill Password, Value: {}")
+        public RegisterPageSteps MainPassword (String mainPasswordInp){
             MainPasswordInput.setValue(MainPasswordInp).click();
             return this;
         }
-        @Step("Newsletter Checkbox")
+        @Step
+        @Description("Newsletter Checkbox")
         public RegisterPageSteps NewsletterCheckBox (){
             MainNewsletterCheckBox.click();
             return this;
         }
-        @Step("Click Create My Account button")
+        @Step
+        @Description("Click Create My Account button")
         public RegisterPageSteps AccButton () {
             MainCreateAccBtn.click();
             return this;
         }
-        @Step("Fill family name")
-        public RegisterPageSteps MainCredentialsName() {
+        @Step
+        @Description("Fill family name")
+        public RegisterPageSteps MainCredentialsName(String mainFamilyNm) {
             familyNameInput.setValue(MainFamilyNm);
             return this;
         }
-        @Step("Fill first name")
-        public RegisterPageSteps MainCredentialsFirstName() {
+        @Step
+        @Description("Fill first name")
+        public RegisterPageSteps MainCredentialsFirstName(String mainFirstNm) {
             firstNameInput.setValue(MainFirstNm);
             return this;
         }
-        @Step("Fill DoB")
-        public RegisterPageSteps MainCredentialsDate() {
+        @Step
+        @Description("Fill DoB")
+        public RegisterPageSteps MainCredentialsDate(String mainDateOfBirth) {
             MainDateOfBirthInput.setValue(MainDateOfBirth);
             return this;
         }
-        @Step("Fill Phone number")
-        public RegisterPageSteps MainCredentialsPhone() {
+        @Step
+        @Description("Fill Phone number")
+        public RegisterPageSteps MainCredentialsPhone(String mainPhoneNum) {
             MainPhoneNumInput.setValue(MainPhoneNum);
             return this;
         }
-        @Step("Click Continue button")
+        @Step
+        @Description("Click Continue button")
         public RegisterPageSteps ContinueBut (){
             MainContinueButton.click();
             return this;

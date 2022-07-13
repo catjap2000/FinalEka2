@@ -8,8 +8,9 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class CareerRegPg {
     public SelenideElement
-            CareerPageUrl = $(new By.ByPartialLinkText("talentview")),
-            AcceptCookies = $("#popin_tc_privacy_button"),
+
+            AcceptCookiesMain = $("#popin_tc_privacy_button"),
+            CareerPageUrl = $("promodjob.talentview.io/?source=site_entreprise"),
             CareerCookies = $(".ms-1 btn btn-primary btn-lg ms-1"),
             CareerOurJobOffers = $("Our job offers"),
             CareerKeyword = $("#10"),

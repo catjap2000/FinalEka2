@@ -2,11 +2,13 @@ package PromodTest;
 
 import StepObject.CareerPageSteps;
 import Utils.ChromeRunner;
-import org.junit.Test;
+import org.testng.annotations.Test;
+import org.testng.annotations.Listeners;
 
+@Listeners(Utils.TestListener.class)
 public class CareerTest extends ChromeRunner {
     @Test
-    public void CareerPgPromod() {
+    public void CareerPgPromod() throws InterruptedException {
         CareerPageSteps Career_Steps = new CareerPageSteps();
         Career_Steps
                 .openUrl();
@@ -14,7 +16,7 @@ public class CareerTest extends ChromeRunner {
         Career_Steps
                 .CookiesMainPg()
                 .GoCareerPage()
-                .AcceptCookies()
+                .CareerAcceptCookies()
                 .OurJobOffer()
                 .KeyWordInput()
                 .LocationInput()
@@ -23,6 +25,7 @@ public class CareerTest extends ChromeRunner {
                 .SearchButton()
                 .ChooseJA()
                 .ApplyButton();
+        Thread.sleep(2000);
 
         Career_Steps
                 .FirstNameInput()

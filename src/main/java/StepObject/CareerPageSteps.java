@@ -17,7 +17,7 @@ public class CareerPageSteps extends CareerRegPg {
 
     @Step("Accept Cookies on Main Page")
     public CareerPageSteps CookiesMainPg(){
-        AcceptCookies.click();
+        AcceptCookiesMain.click();
         return this;
     }
 
@@ -26,8 +26,8 @@ public class CareerPageSteps extends CareerRegPg {
         CareerPageUrl.click();
         return this;
     }
-    @Step("Accept Cookies")
-    public CareerPageSteps AcceptCookies(){
+    @Step("Accept Cookies on Career Page")
+    public CareerPageSteps CareerAcceptCookies(){
         CareerCookies.click();
         return this;
     }

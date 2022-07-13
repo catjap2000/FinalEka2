@@ -9,12 +9,12 @@ public interface CareerRegData {
 
             CareerKeyWordInput = "tech",
             CareerLocationInput = "France",
-            CareerJobTypeInput = null,
+            CareerJobTypeInput = " ",
             CareerCategoryChBx = "Siege",
             CareerFirstNameInput = Faker.instance().name().firstName(),
             CareerLastNameInput = Faker.instance().name().lastName(),
-            CareerPhoneNumInput = "550550550",
-            CareerLogInEmailInput = "catjap@gmail.com",
+            CareerPhoneNumInput = Faker.instance().number().digits(11),
+            CareerLogInEmailInput = Faker.instance().internet().emailAddress(),
             CareerLogInPassword = Faker.instance().number().digits(7);
 
 }
