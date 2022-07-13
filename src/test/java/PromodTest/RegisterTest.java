@@ -3,6 +3,9 @@ package PromodTest;
 import StepObject.RegisterPageSteps;
 import Utils.ChromeRunner;
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -13,6 +16,8 @@ import static DataObject.RegisterPageData.*;
 public class RegisterTest extends ChromeRunner {
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Registering new account on Promod.com")
     public void RegPgProm() throws InterruptedException {
         RegisterPageSteps Reg_Steps = new RegisterPageSteps();
 

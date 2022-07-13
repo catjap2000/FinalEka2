@@ -4,12 +4,14 @@ import StepObject.CareerPageSteps;
 import Utils.ChromeRunner;
 import org.testng.annotations.Test;
 import org.testng.annotations.Listeners;
+import org.testng.asserts.SoftAssert;
 
 @Listeners(Utils.TestListener.class)
 public class CareerTest extends ChromeRunner {
     @Test
     public void CareerPgPromod() throws InterruptedException {
         CareerPageSteps Career_Steps = new CareerPageSteps();
+        SoftAssert softAssert = new SoftAssert();
         Career_Steps
                 .openUrl();
 
@@ -36,5 +38,6 @@ public class CareerTest extends ChromeRunner {
                 .Terms()
                 .SignUp();
 
+        softAssert.assertAll();
     }
 }

@@ -11,7 +11,8 @@ public class ChromeRunner {
 
         Configuration.browser = "Chrome";
         Configuration.baseUrl = "https://www.promod.com/en/";
-        Configuration.browserSize = "1700x1080";
+        Configuration.browserSize = "1300x1080";
+
 
 
     }
