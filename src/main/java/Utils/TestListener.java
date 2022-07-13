@@ -4,6 +4,7 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
@@ -25,10 +26,17 @@ public class TestListener implements ITestListener {
         WebDriver driver = com.codeborne.selenide.WebDriverRunner.getWebDriver();
         takeScreenshot(driver);
     }
-
-
     @Override
     public void onTestFailedButWithinSuccessPercentage (ITestResult result){}
+
+    @Override
+    public void onFinish(ITestContext arg0) {}
+
+    @Override
+    public void onStart(ITestContext arg0) {}
+
+    @Override
+    public void onTestSkipped(ITestResult arg0) {}
 
 
 

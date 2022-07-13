@@ -38,14 +38,14 @@ public class RegisterPageSteps extends RegisterPg {
         @Severity(SeverityLevel.CRITICAL)
         @Description("Fill email address, Value: {Faker}")
         public RegisterPageSteps mail (String mainLogInEmail) {
-            MainEmailInput.setValue(MainLogInEmail).shouldNotBe(Condition.empty);
+            MainEmailInput.setValue(mainLogInEmail).shouldNotBe(Condition.empty);
             return this;
         }
         @Step
         @Severity(SeverityLevel.CRITICAL)
         @Description("Fill Password, Value: {}")
         public RegisterPageSteps MainPassword (String mainPasswordInp){
-            MainPasswordInput.setValue(MainPasswordInp).click();
+            MainPasswordInput.setValue(mainPasswordInp).click();
             return this;
         }
         @Step
@@ -66,7 +66,7 @@ public class RegisterPageSteps extends RegisterPg {
         @Severity(SeverityLevel.CRITICAL)
         @Description("Fill family name")
         public RegisterPageSteps MainCredentialsName(String mainFamilyNm) {
-            familyNameInput.setValue(MainFamilyNm);
+            familyNameInput.setValue(mainFamilyNm);
             return this;
         }
         @Step

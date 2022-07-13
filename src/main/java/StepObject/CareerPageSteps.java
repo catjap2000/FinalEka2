@@ -15,11 +15,11 @@ public class CareerPageSteps extends CareerRegPg {
         open ("https://www.promod.com/en/");
     }
 
-    @Step("Accept Cookies on Main Page")
-    public CareerPageSteps CookiesMainPg(){
-        AcceptCookiesMain.click();
-        return this;
-    }
+//    @Step("Accept Cookies on Main Page")
+//    public CareerPageSteps CookiesMainPg(){
+//        AcceptCookiesMain.click();
+//        return this;
+//    }
 
     @Step ("Go to Career Page")
     public CareerPageSteps GoCareerPage(){

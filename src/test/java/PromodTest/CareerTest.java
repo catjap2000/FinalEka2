@@ -2,6 +2,7 @@ package PromodTest;
 
 import StepObject.CareerPageSteps;
 import Utils.ChromeRunner;
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 import org.testng.annotations.Listeners;
 import org.testng.asserts.SoftAssert;
@@ -9,6 +10,7 @@ import org.testng.asserts.SoftAssert;
 @Listeners(Utils.TestListener.class)
 public class CareerTest extends ChromeRunner {
     @Test
+    @Description ("Go to Career page, using filter (location, job type & category) choose 1 Job Announcement and Apply")
     public void CareerPgPromod() throws InterruptedException {
         CareerPageSteps Career_Steps = new CareerPageSteps();
         SoftAssert softAssert = new SoftAssert();
@@ -16,7 +18,6 @@ public class CareerTest extends ChromeRunner {
                 .openUrl();
 
         Career_Steps
-                .CookiesMainPg()
                 .GoCareerPage()
                 .CareerAcceptCookies()
                 .OurJobOffer()
