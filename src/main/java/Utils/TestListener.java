@@ -8,12 +8,14 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+
 public class TestListener implements ITestListener {
 
     @Attachment(value = "Web Page Screenshot", type = "image/png")
 
-    public byte[] takeScreenshot(WebDriver driver){
-        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+    public void takeScreenshot(WebDriver driver){
+        ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
     @Override
     public void onTestStart(ITestResult result){}
@@ -23,7 +25,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure (ITestResult result){
-        WebDriver driver = com.codeborne.selenide.WebDriverRunner.getWebDriver();
+        WebDriver driver = getWebDriver();
         takeScreenshot(driver);
     }
     @Override

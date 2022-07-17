@@ -1,119 +1,192 @@
 package StepObject;
 
-import DataObject.CareerRegData;
 import PageObject.CareerRegPg;
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
-import static DataObject.CareerRegData.*;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.checked;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CareerPageSteps extends CareerRegPg {
 
-    @Step ("Open Main Page")
-    public void openUrl(){
-        open ("https://www.promod.com/en/");
+    @Step("Open Main Page")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Open Career Page")
+    public void openUrl() {
+        open("https://www.promod.com/en/");
     }
 
-//    @Step("Accept Cookies on Main Page")
-//    public CareerPageSteps CookiesMainPg(){
-//        AcceptCookiesMain.click();
-//        return this;
-//    }
+
+    @Step("Accept Cookies on Main Page")
+    public CareerPageSteps CookiesMainPg(){
+        AcceptCookiesMain.click();
+        return this;
+    }
 
     @Step ("Go to Career Page")
     public CareerPageSteps GoCareerPage(){
-        CareerPageUrl.click();
+        open ("https://promodjob.talentview.io/?source=site_entreprise");
         return this;
     }
-    @Step("Accept Cookies on Career Page")
-    public CareerPageSteps CareerAcceptCookies(){
-        CareerCookies.click();
-        return this;
-    }
-    @Step ("Choose Our Job Offers")
-    public CareerPageSteps OurJobOffer(){
+
+    @Step
+    @Description("Choose Our Job Offers")
+    public CareerPageSteps OurJobOffer() {
         CareerOurJobOffers.click();
         return this;
     }
-    @Step ("Fill Keyword Input, Value: {Tech}")
-    public CareerPageSteps KeyWordInput(){
-        CareerKeyword.setValue(CareerKeyWordInput);
+
+    @Step
+    @Description("Fill Keyword Input, Value: {Tech}")
+    public CareerPageSteps KeyWordInput(String careerKeyWordInput) {
+        CareerKeyword.setValue(careerKeyWordInput).shouldNotBe(Condition.empty);
         return this;
     }
-    @Step ("Fill Location Input, Value: {France}")
-    public CareerPageSteps LocationInput(){
-        CareerLocation.setValue(CareerLocationInput);
+
+    @Step
+    @Description ("Fill Location Input, Value: {France}")
+    public CareerPageSteps LocationInput(String locationInput) {
+        CareerLocation.setValue(locationInput);
+        CareerLocation.dragAndDropTo(CareerLocation2).click();
+        CareerLocation2.shouldBe(Condition.editable, Condition.text("France")).click();
+        CareerLocation.shouldNotBe(Condition.empty);
         return this;
     }
-    @Step ("Skip Job Type Input, Value: {0}")
-    public CareerPageSteps JobTypeInput(){
-        CareerJobType.setValue(CareerJobTypeInput);
+
+    @Step
+    @Description ("Skip Job Type Input, Value: {0}")
+    public CareerPageSteps JobTypeInput(String jobType) {
+        CareerJobType.shouldBe(Condition.empty);
         return this;
     }
-    @Step ("Select Category(Choose from DropDown)")
-    public CareerPageSteps CategoryInput(){
-        CareerCategoryInputDD.setValue(CareerCategoryChBx).shouldBe(Condition.selected).click();
-        return this;
+
+    @Step
+    @Description ("Select Category(Choose from DropDown)")
+//    public CareerPageSteps CategoryInput() {
+
+        public WebElement getFirstSelectedOption() {
+        dropdown.click();
+        Select dropdown = new Select(webdriver().object().findElement(new By.ById("#16")));
+        int option = 2;
+//        String option = String.valueOf((CareerCategoryCheckBx));
+        dropdown.selectByIndex(option);
+
+        var selectedOptions = dropdown.getAllSelectedOptions();
+        Assert.assertEquals(2, selectedOptions.size());
+        Assert.assertEquals(option, selectedOptions.get(0).getAttribute("value()"));
+
+
+        this.getOptions().stream().filter(WebElement::isSelected).findFirst().orElseThrow(() -> {
+            return new NoSuchElementException("No options are selected");
+        });
+        return (WebElement) this;
+
     }
-    @Step("Click on Search Button")
-    public CareerPageSteps SearchButton(){
+
+    @Step
+    @Description ("Click on Search Button")
+    public CareerPageSteps SearchButton() {
         CareerJobSearchBtn.click();
         return this;
     }
-    @Step ("Choose first Job Announcement, Value: {0}")
-    public CareerPageSteps ChooseJA(){
+
+    @Step
+    @Description ("Choose first Job Announcement, Value: {0}")
+    public CareerPageSteps ChooseJA() {
         CareerJA.setValue("0").click();
         return this;
     }
-    @Step ("Click Apply Button")
-    public CareerPageSteps ApplyButton(){
+
+    @Step
+    @Description ("Click Apply Button")
+    public CareerPageSteps ApplyButton() {
         CareerJobApplyBtn.click();
         return this;
     }
-    @Step ("Fill First Name, Value: {Faker}")
-    public CareerPageSteps FirstNameInput(){
-        CareerFirsNameInput.setValue(CareerFirstNameInput).shouldNotBe(Condition.empty);
+
+    @Step
+    @Description ("Fill First Name, Value: {Faker}")
+    public CareerPageSteps FirstNameInput(String firstname) {
+        CareerFirsNameInput.setValue(firstname).shouldNotBe(Condition.empty);
         return this;
     }
-    @Step("Fill Last Name, Value:{Faker}")
-    public CareerPageSteps LastNameInput(){
-        CareerLastNameInput.setValue(CareerRegData.CareerLastNameInput).shouldNotBe(Condition.empty);
+
+    @Step
+    @Description ("Fill Last Name, Value:{Faker}")
+    public CareerPageSteps LastNameInput(String lastname) {
+        CareerLastNameInput.setValue(lastname).shouldNotBe(Condition.empty);
         return this;
     }
-    @Step("Fill Email Address, Value: {catjap@gmail.com}")
-    public CareerPageSteps EmailInput(){
-        CareerRegEmailInput.setValue(CareerLogInEmailInput).shouldNotBe(Condition.empty);
+
+    @Step
+    @Description ("Fill Email Address, Value: {catjap@gmail.com}")
+    public CareerPageSteps EmailInput(String emailCareer) {
+        CareerRegEmailInput.setValue(emailCareer).shouldNotBe(Condition.empty);
         return this;
     }
-    @Step("Create Your Password, Value: {Faker}")
-    public CareerPageSteps PasswordInput(){
-        CareerRegPasswordInput.setValue(CareerLogInPassword).shouldNotBe(Condition.empty);
+
+    @Step
+    @Description ("Create Your Password, Value: {Faker}")
+    public CareerPageSteps PasswordInput(String passwordCareer) {
+        CareerRegPasswordInput.setValue(passwordCareer).shouldNotBe(Condition.empty);
         return this;
     }
-    @Step("Select Country Dial Code (DropDown), Value: {Georgia (საქართველო)}")
-    public CareerPageSteps DialCodeDropDown(){
+
+    @Step
+    @Description ("Select Country Dial Code (DropDown), Value: {Georgia (საქართველო)}")
+    public CareerPageSteps DialCodeDropDown() {
         CareerDialCodeDropDown.click();
         CareerCountryName.shouldBe(Condition.selected);
         return this;
     }
-    @Step("Fill Phone Number, Value: {550550550}")
-    public CareerPageSteps PhoneNumberInput(){
-        CareerPhoneNumberInput.setValue(CareerPhoneNumInput).shouldNotBe(Condition.empty);
+
+    @Step
+    @Description ("Fill Phone Number, Value: {550550550}")
+    public CareerPageSteps PhoneNumberInput(String phoneNum) {
+        CareerPhoneNumberInput.setValue(phoneNum).shouldNotBe(Condition.empty);
         return this;
     }
-    @Step("Check Terms Box")
-    public CareerPageSteps Terms(){
-        CareerTermsCheckBx.shouldBe(Condition.checked);
+
+    @Step
+    @Description ("Check Terms Box")
+    public CareerPageSteps Terms() {
+        CareerTermsCheckBx.shouldBe(checked);
         return this;
     }
-    @Step ("Click SignUp Button")
-    public CareerPageSteps SignUp(){
+
+    @Step
+    @Description ("Click SignUp Button")
+    public CareerPageSteps SignUp() {
         SignUpBtn.click();
         return this;
     }
+    @Step
+    @Description("Accept Cookies on Career Page")
+    public CareerPageSteps CareerAcceptCookies() {
+        CareerCookies.click();
+        return this;
+    }
+
+//    @Step
+//    @Description("Accept Cookies on Career Page")
+//    public CareerPageSteps CareerAcceptCookies() {
+//        if (CareerCookies.is(Condition.visible))
+//            CareerCookies.should().click();
+//        else if (CareerCookies.is(Condition.not(Condition.visible))) {
+//            CareerCookies.shouldNot().click();
+//
+//        }
+//        return null;
+    }
 
 
-}
 
 
