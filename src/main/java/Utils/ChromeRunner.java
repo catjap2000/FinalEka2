@@ -6,14 +6,18 @@ import org.testng.annotations.BeforeTest;
 public class ChromeRunner {
 
     @BeforeTest
-    public static void PromConfig(){
-
+    public static void PromConfig() {
 
         Configuration.browser = "Chrome";
         Configuration.baseUrl = "https://www.promod.com/en/";
         Configuration.browserSize = "1300x1080";
-
-
-
     }
-}
+//        WebDriver driver = new ChromeDriver();
+//        driver.get("https://www.promod.com/en/");
+//        driver.manage().window().maximize();
+//    public static void PromConfig(String[] args) throws InterruptedException {
+//        System.setProperty("webdriver.chrome.driver", "Path_of_Chrome_Driver");
+//        WebDriver driver = new ChromeDriver();
+//        driver.get("https://www.promod.com/en/");
+//        driver.manage().window().maximize();
+    }

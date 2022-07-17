@@ -1,5 +1,6 @@
 package PageObject;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.selector.ByText;
 import org.openqa.selenium.By;
@@ -10,14 +11,15 @@ public class CareerRegPg {
     public SelenideElement
 
             AcceptCookiesMain = $("#popin_tc_privacy_button"),
-            CareerPageUrl = $("promodjob.talentview.io/?source=site_entreprise"),
-            CareerCookies = $(".ms-1 btn btn-primary btn-lg ms-1"),
-            CareerOurJobOffers = $("Our job offers"),
-            CareerKeyword = $("#10"),
-            CareerLocation = $(By.id("#12")),
-            CareerJobType = $(By.id("#14")),
-            CareerCategoryInputDD = $("#16-prepend"),
-            CareerCategoryCheckBx = $(new ByText("Siege")),
+            CareerPageSelector = $(new By.ByXPath("//*[@id=\"abtest-footer\"]/nav/div[3]/div[2]/ul/li[4]/a")),
+            CareerCookies = $(new ByText("Accept all")),
+            CareerOurJobOffers = $(new ByText("Our job offers")),
+            CareerKeyword = $(new By.ByXPath("//*[@id=\"10\"]")),
+            CareerLocation = $(new By.ByXPath("//*[@id=\"12\"]")),
+            CareerLocation2 = $(new ByText("France")),
+            CareerJobType = $(new By.ByXPath("//*[@id=\"14\"]")),
+            dropdown = $(new By.ByXPath("//*[@id=\"16\"]")),
+            CareerCategoryCheckBx = $("Siege"),
             CareerJobSearchBtn = $("Search"),
             CareerJA = $(".card-title bold truncate--2"),
             CareerJobApplyBtn = $(new ByText("Apply")),
@@ -32,7 +34,7 @@ public class CareerRegPg {
             SignUpBtn = $(new ByText(" Sign up"));
 
 
-
-
-
+    protected ElementsCollection.SelenideElementIterable getOptions() {
+        return null;
+    }
 }
