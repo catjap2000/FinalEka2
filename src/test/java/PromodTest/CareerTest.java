@@ -34,7 +34,7 @@ public class CareerTest extends ChromeRunner {
                 .JobTypeInput(CareerJobTypeInput);
 
         Career_Steps
-                .getFirstSelectedOption();
+                .CategoryInput();
         Thread.sleep(2000);
         
         Career_Steps

@@ -6,14 +6,9 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.checked;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 
 public class CareerPageSteps extends CareerRegPg {
 
@@ -70,38 +65,28 @@ public class CareerPageSteps extends CareerRegPg {
 
     @Step
     @Description ("Select Category(Choose from DropDown)")
-//    public CareerPageSteps CategoryInput() {
-
-        public WebElement getFirstSelectedOption() {
+    public CareerPageSteps CategoryInput() {
         dropdown.click();
-        Select dropdown = new Select(webdriver().object().findElement(new By.ById("#16")));
-        int option = 2;
-//        String option = String.valueOf((CareerCategoryCheckBx));
-        dropdown.selectByIndex(option);
-
-        var selectedOptions = dropdown.getAllSelectedOptions();
-        Assert.assertEquals(2, selectedOptions.size());
-        Assert.assertEquals(option, selectedOptions.get(0).getAttribute("value()"));
-
-
-        this.getOptions().stream().filter(WebElement::isSelected).findFirst().orElseThrow(() -> {
-            return new NoSuchElementException("No options are selected");
-        });
-        return (WebElement) this;
+//        CareerCategoryCheckBx.selectOption(2);
+        CareerCategoryCheckBx.click();
+        dropdown.click();
+//        CareerCategoryCheckBx.shouldBe(selected);
+//        Assert.assertEquals(CareerCategoryCheckBx.is(selected));
+        return this;
 
     }
 
     @Step
     @Description ("Click on Search Button")
     public CareerPageSteps SearchButton() {
-        CareerJobSearchBtn.click();
+        CareerJobSearchBtn.submit();
         return this;
     }
 
     @Step
     @Description ("Choose first Job Announcement, Value: {0}")
     public CareerPageSteps ChooseJA() {
-        CareerJA.setValue("0").click();
+        CareerJA.click();
         return this;
     }
 
