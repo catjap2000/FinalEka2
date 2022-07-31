@@ -19,7 +19,7 @@ public class CareerTest extends ChromeRunner {
                 .openUrl();
 
         Career_Steps
-                .CookiesMainPg()
+//                .CookiesMainPg()
                 .GoCareerPage()
                 .CareerAcceptCookies()
                 .OurJobOffer()
@@ -48,7 +48,8 @@ public class CareerTest extends ChromeRunner {
                 .LastNameInput(CareerLastNameInput)
                 .EmailInput(CareerLogInEmailInput)
                 .PasswordInput(CareerLogInPassword)
-                .DialCodeDropDown().PhoneNumberInput(CareerPhoneNumInput)
+//                .DialCodeDropDown()
+                .PhoneNumberInput()
                 .Terms()
                 .SignUp();
     }

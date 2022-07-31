@@ -14,7 +14,11 @@ public interface CareerRegData {
             CareerFirstNameInput = Faker.instance().name().firstName(),
             CareerLastNameInput = Faker.instance().name().lastName(),
             CareerPhoneNumInput = Faker.instance().number().digits(11),
+    CareerCountryIndex = "Georgia",
             CareerLogInEmailInput = Faker.instance().internet().emailAddress(),
             CareerLogInPassword = Faker.instance().number().digits(7);
+
+
+
 
 }

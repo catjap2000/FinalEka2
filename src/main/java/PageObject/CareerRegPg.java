@@ -21,20 +21,23 @@ public class CareerRegPg {
             dropdown = $(new By.ByXPath("//*[@id=\"16\"]")),
             CareerCategoryCheckBx = $(By.xpath("//section[@id='jobs']/div/div[2]/form/div[4]/div[@id=\"dropdown-15\"]/ul/li[3]/a/span/span[@class=\"icon-wrapper\"]")),
             CareerJobSearchBtn = $(By.xpath("//html/body/div[1]/div[1]/div/main/div/section/div[2]/div/section/div/div[2]/form/div[5]/button")),
-            CareerJA = $(By.xpath("//html/body/div[1]/div/div/main/div/section/div[2]/div/div/div/div/div/a/div/div/div[2]/div[@class=\"card-body\"]")),
+            CareerJA = $(By.xpath("//html/body/div[1]/div/div/main/div/section/div[2]/div/div/div/div/div[@class=\"row justify-content-center\"]/a[1]")),
             CareerJobApplyBtn = $(new ByText("Apply")),
-            CareerFirsNameInput = $(By.id("#20")),
-            CareerLastNameInput = $(By.id("#21")),
-            CareerRegEmailInput = $(By.id("#22")),
-            CareerRegPasswordInput = $(By.id("#23")),
-            CareerDialCodeDropDown = $(".iti__selected-dial-code"),
-            CareerCountryName = $("Georgia (საქართველო)"),
-            CareerPhoneNumberInput = $(By.id("#24")),
-            CareerTermsCheckBx = $(By.id("#25")),
-            SignUpBtn = $(new ByText(" Sign up"));
+            CareerFirsNameInput = $(By.xpath("//html/body/div/div/div/main/section/div/div/section/section/section/form/div/input[@class=\"form-control\"]")),
+            CareerLastNameInput = $(By.xpath("//html/body/div/div/div/main/section/div/div/section/section/section/form/div[2]/input")),
+            CareerRegEmailInput = $(By.xpath("//html/body/div/div/div/main/section/div/div/section/section/section/form/div[3]/input")),
+            CareerRegPasswordInput = $(By.xpath("//html/body/div/div/div/main/section/div/div/section/section/section/form/div[4]/input")),
+            CareerDialCodeDropDown = $(By.xpath("//html/body/div/div/div/main/section/div/div/section/section/section/form/div[5]/div/div/div/div[3]")),
+    CareerCountries = $(By.xpath("//html/body/div/div/div/main/section/div/div/section/section/section/form/div[5]/div/div/ul/li[@id=\"iti-1__item-ge")),
+//            CareerCountryName = $(),
+            CareerPhoneNumberInput = $(By.xpath("//html/body/div/div/div/main/section/div/div/section/section/section/form/div[5]/div/input")),
+            CareerTermsCheckBx = $(By.xpath("//html/body/div/div/div/main/section/div/div/section/section/section/form/div[6]/input")),
+            SignUpBtn = $(By.xpath("//html/body/div/div/div/main/section/div/div/section/section/section/form/div[7]/button"));
 
 
     protected ElementsCollection.SelenideElementIterable getOptions() {
         return null;
     }
 }
+
+//"//html/body/div[1]/div/div/main/div/section/div[2]/div/div/div/div/div/a/div/div/div[2]/div[@class=\"card-body\"]"

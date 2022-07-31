@@ -7,7 +7,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.checked;
+import static DataObject.CareerRegData.CareerPhoneNumInput;
 import static com.codeborne.selenide.Selenide.open;
 
 public class CareerPageSteps extends CareerRegPg {
@@ -67,13 +67,9 @@ public class CareerPageSteps extends CareerRegPg {
     @Description ("Select Category(Choose from DropDown)")
     public CareerPageSteps CategoryInput() {
         dropdown.click();
-//        CareerCategoryCheckBx.selectOption(2);
         CareerCategoryCheckBx.click();
         dropdown.click();
-//        CareerCategoryCheckBx.shouldBe(selected);
-//        Assert.assertEquals(CareerCategoryCheckBx.is(selected));
         return this;
-
     }
 
     @Step
@@ -125,25 +121,27 @@ public class CareerPageSteps extends CareerRegPg {
         return this;
     }
 
-    @Step
-    @Description ("Select Country Dial Code (DropDown), Value: {Georgia (საქართველო)}")
-    public CareerPageSteps DialCodeDropDown() {
-        CareerDialCodeDropDown.click();
-        CareerCountryName.shouldBe(Condition.selected);
-        return this;
-    }
+//    @Step
+//    @Description ("Select Country Dial Code (DropDown), Value: {Georgia (საქართველო)}")
+//    public CareerPageSteps DialCodeDropDown() throws InterruptedException {
+//        CareerDialCodeDropDown.click();
+//        CareerCountries.setValue(CareerCountryIndex).click();
+//        wait(3000);
+//        return this;
+//    }
 
     @Step
     @Description ("Fill Phone Number, Value: {550550550}")
-    public CareerPageSteps PhoneNumberInput(String phoneNum) {
-        CareerPhoneNumberInput.setValue(phoneNum).shouldNotBe(Condition.empty);
+    public CareerPageSteps PhoneNumberInput() {
+        CareerPhoneNumberInput.setValue(CareerPhoneNumInput).shouldNotBe(Condition.empty);
         return this;
     }
 
     @Step
     @Description ("Check Terms Box")
     public CareerPageSteps Terms() {
-        CareerTermsCheckBx.shouldBe(checked);
+        CareerTermsCheckBx.click();
+        CareerTermsCheckBx.shouldBe(Condition.checked);
         return this;
     }
 
@@ -160,16 +158,6 @@ public class CareerPageSteps extends CareerRegPg {
         return this;
     }
 
-//    @Step
-//    @Description("Accept Cookies on Career Page")
-//    public CareerPageSteps CareerAcceptCookies() {
-//        if (CareerCookies.is(Condition.visible))
-//            CareerCookies.should().click();
-//        else if (CareerCookies.is(Condition.not(Condition.visible))) {
-//            CareerCookies.shouldNot().click();
-//
-//        }
-//        return null;
     }
 
 
